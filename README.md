@@ -3,7 +3,7 @@ Starter project for Helm (K8S) Node JS workflow. Provides useful dev environment
 
 ## Local development
 
-**Environment:**
+**Requirements:**
 - Windows, WSL2 backend
 - Docker Desktop + Kubernetes
 - VSCode with "Kubernetes" and "Remote-containers" extensions
