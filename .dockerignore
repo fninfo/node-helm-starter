@@ -1,0 +1,18 @@
+# Docker
+Dockerfile
+docker-compose*
+.dockerignore
+
+# Helm chart
+chart
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Runtime data
+node_modules
+
+# Docs
+README.md
