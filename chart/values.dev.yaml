@@ -9,7 +9,7 @@ image:
 volumes:
   - name: src-sync
     hostPath:
-      path: "/run/desktop/mnt/host/a/Yuri - media/Desktop/Bots/node-template"
+      path: "/run/desktop/mnt/host/drive/path/to/src"
       type: Directory
 volumeMounts:
   - name: src-sync
