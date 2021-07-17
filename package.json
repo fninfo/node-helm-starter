@@ -1,7 +1,7 @@
 {
   "name": "edit-me",
   "version": "1.0.0",
-  "description": "",
+  "description": "edit-description",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
