@@ -11,8 +11,23 @@ volumes:
     hostPath:
       path: "/run/desktop/mnt/host/drive/path/to/src"
       type: Directory
+  - name: dep-sync
+    emptyDir: {}
+
 volumeMounts:
   - name: src-sync
     mountPath: /usr/app
+  - name: dep-sync
+    mountPath: /usr/app/node_modules
+
+initContainerClone:
+  command:
+    - cp
+    - -a
+    - /usr/app/node_modules/.
+    - /node_modules/
+  volumeMounts:  
+    - name: dep-sync
+      mountPath: /node_modules
 
 terminationGracePeriodSeconds: 10

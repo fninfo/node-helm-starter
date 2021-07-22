@@ -2,7 +2,8 @@ FROM node:14-alpine
 
 WORKDIR /usr/app
 COPY --chown=node:node package.json package.json
-RUN if [ "${NODE_ENV}" = "development" ]; \
+ARG devmode
+RUN if [ "$devmode" = "true" ]; \
 		then npm i; \
 		else npm i --only=production; \
 	fi
