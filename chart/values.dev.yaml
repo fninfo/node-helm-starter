@@ -23,7 +23,7 @@ volumeMounts:
 initContainerClone:
   command:
     - cp
-    - -a
+    - -dR
     - /usr/app/node_modules/.
     - /node_modules/
   volumeMounts:  
