@@ -30,4 +30,7 @@ initContainerClone:
     - name: dep-sync
       mountPath: /node_modules
 
+updateStrategy:
+  type: Recreate
+
 terminationGracePeriodSeconds: 10
