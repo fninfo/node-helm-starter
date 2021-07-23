@@ -79,6 +79,9 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
+updateStrategy:
+  type: RollingUpdate
+
 nodeSelector: {}
 
 tolerations: []
