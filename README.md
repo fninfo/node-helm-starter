@@ -14,7 +14,7 @@ Starter project for Helm (K8S) Node JS workflow. Provides useful dev environment
 ### Setup guide
 1. Copy files from this repo into your project, excluding git (or use github template)
 2. Do the global replace of "edit-me" with your chart name, "edit-description" with short description
-3. Update mount path in ./chart/values.dev.yaml:volumes.hostPath.path
+3. Update mount path in ./chart/values.dev.yaml:volumes.hostPath.path starting with "drive". Note: drive letter must be specified in lowercase.
 
 ### package.json - no changes
 Just save files; nodemon should perform the update automatically
