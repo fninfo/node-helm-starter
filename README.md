@@ -5,7 +5,8 @@ Starter project for Helm (K8S) Node JS workflow. Provides useful dev environment
 
 **Requirements:**
 - Windows, WSL2 backend
-- Docker Desktop + Kubernetes
+- Docker Desktop, Kubernetes enabled
+- Helm
 - VSCode with "Kubernetes" and "Remote-containers" extensions
 - Local docker registry. If not present, run the following command:
 > docker run -d -p 5000:5000 --restart=always --name registry registry:2
