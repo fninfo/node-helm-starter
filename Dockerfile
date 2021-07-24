@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:14.17-alpine
 
 WORKDIR /usr/app
 COPY --chown=node:node package.json package.json
