@@ -10,10 +10,10 @@ Starter project for Helm (K8S) Node JS workflow. Provides useful dev environment
 - VSCode with "Kubernetes" and "Remote-containers" extensions
 - Local docker registry. If not present, run the following command:
 > docker run -d -p 5000:5000 --restart=always --name registry registry:2
-- Utility that can add npm dependencies (it's not necessary to install them). It is possible to use npm i, although downloaded content will be overwritten during the docker build stage
+- OPTIONAL: utility that can add npm packages without downloading them (otherwise downloaded content will be overwritten during the build stage). By the way, running `npm i *package*` inside container works without node/npm on local machine
 
 ### Setup guide
-1. Copy files from this repo into your project, excluding git (or use github template)
+1. Copy files from this repo into your project, excluding .git (or use github template)
 2. Do the global replace of "edit-me" with your chart name, "edit-description" with short description
 3. Update mount path in ./chart/values.dev.yaml:volumes.hostPath.path starting with "drive". Note: drive letter must be specified in lowercase.
 
@@ -27,4 +27,7 @@ Execute the following commands to update current chart:
 
 Override secrets via `-f .\chart\secrets.yaml` if you created file with secrets
 
-If you're creating something complex and want to test prod values, replace .\chart\values.dev.yaml with .\chart\values.yaml. This will also disable nodemon.
+If you're creating something complex and want to test prod values, replace `.\chart\values.dev.yaml` with `.\chart\values.yaml`. This will also disable nodemon.
+
+### How to uninstall your app
+> helm uninstall edit-me
