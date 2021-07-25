@@ -24,7 +24,8 @@ Execute the following commands to update current chart:
 
 > docker build . --build-arg devmode="true" -t edit-me; docker tag edit-me localhost:5000/edit-me;  docker push localhost:5000/edit-me ; helm upgrade --install -f .\chart\values.dev.yaml edit-me ./chart; kubectl rollout restart deployment edit-me; docker image prune -f
 
-Override secrets via `-f .\chart\secrets.yaml` if you created file with secrets
+Override secrets via `-f .\chart\secrets.yaml` if you created file with secrets.
+Add `-n *namespace*` to `helm upgrade` command if you want to specify namespace.
 
 If you're creating something complex and want to test prod values, replace `.\chart\values.dev.yaml` with `.\chart\values.yaml`. This will also disable nodemon.
 
