@@ -1,0 +1,48 @@
+name: Build and release app
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@master
+      
+    - name: Parse chart data
+      uses: CumulusDS/get-yaml-paths-action@v0.1.1
+      id: versioning
+      with:
+        file: chart/Chart.yaml
+        appName: name
+        appVersion: appVersion
+    
+    - name: Build & push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: ${{ steps.versioning.outputs.appName }}
+        tags: ${{ steps.versioning.outputs.appVersion }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    # ghcr not supported yet
+    - name: Delete old packages
+      uses: smartsquaregmbh/delete-old-packages@v0.3.1
+      with:
+        keep: 3
+        organization: ${{ github.repository_owner }}
+        names: |
+          ${{ steps.versioning.outputs.appName }}
+      
+    - name: Upload chart
+      uses: fninfo/helm3-push-action@master
+      env:
+        SOURCE_DIR: '.'
+        CHART_FOLDER: 'chart'
+        CHARTMUSEUM_URL: 'https://charts.internal.fninfo.dev'
+        CHARTMUSEUM_USER: '${{ secrets.CHARTMUSEUM_USER }}'
+        CHARTMUSEUM_PASSWORD: ${{ secrets.CHARTMUSEUM_PASSWORD }}

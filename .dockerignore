@@ -3,6 +3,9 @@ Dockerfile
 docker-compose*
 .dockerignore
 
+# CI/CD
+.github
+
 # Helm chart
 chart
 
