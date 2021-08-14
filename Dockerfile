@@ -5,7 +5,7 @@ COPY --chown=node:node package.json package-lock.json ./
 ARG devmode
 RUN if [ "$devmode" = "true" ]; \
 		then npm i; \
-		else npm i --only=production; \
+		else npm ci --only=production; \
 	fi
 COPY --chown=node:node . .
 
