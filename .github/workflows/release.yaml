@@ -46,4 +46,4 @@ jobs:
         CHARTMUSEUM_URL: 'https://charts.internal.fninfo.dev'
         CHARTMUSEUM_USER: '${{ secrets.CHARTMUSEUM_USER }}'
         CHARTMUSEUM_PASSWORD: ${{ secrets.CHARTMUSEUM_PASSWORD }}
-        FORCE: true
+        FORCE: True
