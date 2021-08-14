@@ -1,7 +1,7 @@
 FROM node:14.17-alpine
 
 WORKDIR /usr/app
-COPY --chown=node:node package.json package-lock.json .
+COPY --chown=node:node package.json package-lock.json ./
 ARG devmode
 RUN if [ "$devmode" = "true" ]; \
 		then npm i; \
