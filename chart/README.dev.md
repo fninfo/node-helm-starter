@@ -24,6 +24,8 @@ Execute the following commands to update current chart:
 
 > docker build . --build-arg devmode="true" -t edit-me; docker tag edit-me localhost:5000/edit-me;  docker push localhost:5000/edit-me ; helm upgrade --install -f .\chart\values.dev.yaml edit-me ./chart; kubectl rollout restart deployment edit-me; docker image prune -f
 
+Note: you may need to switch context using `kubectl config use-context docker-desktop`.
+
 Override secrets via `-f .\chart\secrets.yaml` if you created file with secrets.
 Add `-n *namespace*` to `helm upgrade` command if you want to specify namespace.
 
