@@ -25,18 +25,9 @@ jobs:
       with:
         image: ${{ steps.versioning.outputs.appName }}
         tags: ${{ steps.versioning.outputs.appVersion }}
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-
-    # ghcr not supported yet
-    - name: Delete old packages
-      uses: smartsquaregmbh/delete-old-packages@v0.3.1
-      with:
-        keep: 3
-        organization: ${{ github.repository_owner }}
-        names: |
-          ${{ steps.versioning.outputs.appName }}
+        registry: 'registry.internal.fninfo.dev'
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.PASSWORD }}
       
     - name: Upload chart
       uses: fninfo/helm3-push-action@master
@@ -44,6 +35,6 @@ jobs:
         SOURCE_DIR: '.'
         CHART_FOLDER: 'chart'
         CHARTMUSEUM_URL: 'https://charts.internal.fninfo.dev'
-        CHARTMUSEUM_USER: '${{ secrets.CHARTMUSEUM_USER }}'
-        CHARTMUSEUM_PASSWORD: ${{ secrets.CHARTMUSEUM_PASSWORD }}
+        CHARTMUSEUM_USER: ${{ secrets.USER }}
+        CHARTMUSEUM_PASSWORD: ${{ secrets.PASSWORD }}
         FORCE: 'True'

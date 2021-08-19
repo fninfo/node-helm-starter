@@ -8,6 +8,7 @@ env:
 replicaCount: 1
 
 image:
+  registry: registry.internal.fninfo.dev
   repository: edit-me
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
@@ -19,7 +20,7 @@ fullnameOverride: "edit-me"
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: true
+  create: false
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
@@ -47,18 +48,18 @@ service:
 ingress:
   enabled: false
   className: ""
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  annotations:
+  # kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
   hosts:
     - host: chart-example.local
       paths:
         - path: /
           pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  tls:
+    - hosts:
+        - chart-example.local
+      secretName: chart-example-tls
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
