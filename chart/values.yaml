@@ -92,6 +92,11 @@ affinity: {}
 monitorConfig: {}
 
 volumes: {}
+#- name: cache
+#  emptyDir: {}
+
 volumeMounts: {}
+#- name: cache
+#  mountPath: /usr/app/data
 
 terminationGracePeriodSeconds: 120

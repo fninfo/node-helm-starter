@@ -14,12 +14,16 @@ volumes:
       type: Directory
   - name: dep-sync
     emptyDir: {}
+#  - name: cache
+#    emptyDir: {}
 
 volumeMounts:
   - name: src-sync
     mountPath: /usr/app
   - name: dep-sync
     mountPath: /usr/app/node_modules
+#  - name: cache
+#    mountPath: /usr/app/data
 
 initContainerClone:
   command:
