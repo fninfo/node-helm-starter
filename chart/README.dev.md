@@ -29,7 +29,5 @@ Execute the following commands to update current chart:
 Override secrets via `-f .\chart\secrets.yaml` if you created file with secrets.
 Add `-n *namespace*` to `helm upgrade` command if you want to specify namespace.
 
-If you're creating something complex and want to test prod values, replace `.\chart\values.dev.yaml` with `.\chart\values.yaml`. This will also disable nodemon.
-
 ## Uninstall guide
 > helm uninstall edit-me
