@@ -46,10 +46,6 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: {{ .Values.service.internalPort }}
-              protocol: TCP
           envFrom:
           - configMapRef:
               name: {{ include "chart.fullname" . }}
@@ -58,8 +54,10 @@ spec:
               name: {{ include "chart.fullname" . }}
         {{- end }}
           env: 
-          - name: PORT
-            value: "{{ .Values.service.internalPort }}"
+          {{- range $k, $v := .Values.service.ports }}
+          - name: {{ upper $v.name }}_PORT
+            value: {{ $v.targetPort | quote }}
+          {{- end }}
           {{- if .Values.monitorConfig.liveness }}
           livenessProbe: {{- toYaml .Values.monitorConfig.liveness | nindent 12 }}
           {{- end }}
